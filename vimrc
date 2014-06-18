@@ -12,12 +12,14 @@ Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
 Bundle 'slim-template/vim-slim'
+Bundle 'valloric/youcompleteme'
+Bundle 'klen/python-mode'
+Bundle 'ivanov/vim-ipython'
 
 filetype plugin indent on
 
@@ -26,14 +28,11 @@ let mapleader=","
 color jellybeans
 
 set cursorline
-set expandtab
 set modelines=0
-set shiftwidth=2
 set clipboard=unnamed
 set synmaxcol=128
 set ttyscroll=10
 set encoding=utf-8
-set tabstop=2
 set nowrap
 set number
 set expandtab
@@ -106,9 +105,30 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_files = 600
 let g:ctrlp_max_depth = 5
 
+" Powerline setup
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+" Powerline
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+"set guifont=Anonymice\ Powerline
+set laststatus=2
+
 " Go programming
 set rtp+=/usr/local/Cellar/go/1.0.3/misc/vim
 
 " Quit with :Q
 command -nargs=0 Quit :qa!
+
+" Use <leader>l to toggle display of whitespace
+nmap <leader>l :set list!<CR>
+" automatically change window's cwd to file's dir
+set autochdir
+
+" I'm prefer spaces to tabs
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 
